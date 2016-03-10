@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="RailsApp">
+<html ng-app="RailsApp" ng-cloak>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,6 +9,7 @@
     
     <%= csrf_meta_tags %>
     
+    <%= stylesheet_link_tag '/vendor/angular/angular-csp.css' %>
     <%= stylesheet_link_tag '/vendor/bootstrap/dist/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag '/vendor/font-awesome/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag 'application' %>

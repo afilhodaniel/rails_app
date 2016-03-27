@@ -9,6 +9,9 @@ module Api
           params.require(:user).permit(:avatar, :name, :bio, :username, :email, :password)
         end
         
+        def query_params
+          params.permit(:id)
+        end
     end
   end
 end

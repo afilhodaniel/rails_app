@@ -22,4 +22,9 @@
 en:
   app:
     title: 'RailsApp'
+  message:
     unauthenticated: 'You are not authenticated'
+  label:
+    email_or_username: 'E-mail or username'
+  button:
+    signin: 'Signin'

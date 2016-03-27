@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.attachment :avatar
       t.string     :name,     null: false
       t.text       :bio
-      t.string     :username
+      t.string     :username, null: false
       t.string     :email,    null: false
       t.string     :password, null: false
 

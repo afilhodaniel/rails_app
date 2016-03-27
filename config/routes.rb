@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   namespace :sessions do
     get  '/unauthenticated', action: :unauthenticated
-    post '/signin',  action: :signin
+    get  '/signin',  action: :signin_get
+    post '/signin',  action: :signin_post
     get  '/signout', action: :signout
   end
 

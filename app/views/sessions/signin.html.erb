@@ -1,0 +1,9 @@
+<%= form_for :user, url: sessions_signin_path(format: :json) do |f| %>
+  <%= f.label :email, t('label.email_or_username') %>
+  <%= f.text_field :email %>
+  
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.button t('button.signin'), type: :submit %>
+<% end %>

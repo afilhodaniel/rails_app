@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151228120806) do
     t.datetime "avatar_updated_at"
     t.string   "name",                null: false
     t.text     "bio"
-    t.string   "username"
+    t.string   "username",            null: false
     t.string   "email",               null: false
     t.string   "password",            null: false
     t.datetime "created_at",          null: false

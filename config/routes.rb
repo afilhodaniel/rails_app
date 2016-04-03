@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get  '/unauthenticated', action: :unauthenticated
     get  '/signin',  action: :signin_get
     post '/signin',  action: :signin_post
+    get  '/signup',  action: :signup_get
+    post '/signup',  action: :signup_post
     get  '/signout', action: :signout
   end
 

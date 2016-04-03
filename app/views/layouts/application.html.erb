@@ -15,8 +15,31 @@
     <%= stylesheet_link_tag 'application' %>
   </head>
   <body ng-controller="AppController">
-    
-    <%= yield %>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if @current_user %>
+              <li><%= link_to t('link.signout'), sessions_signout_path, title: t('link.signout') %></li>
+            <% else %>
+              <li><%= link_to t('link.signin'), sessions_signin_path, title: t('link.signin') %></li>
+              <li><%= link_to t('link.signup'), sessions_signup_path, title: t('link.signup') %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
     
     <% if Rails.env.development? %>
       <%= javascript_include_tag 'http://localhost:35729/livereload.js' %>

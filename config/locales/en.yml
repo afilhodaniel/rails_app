@@ -22,9 +22,24 @@
 en:
   app:
     title: 'RailsApp'
+  title:
+    signin: 'Signin'
+    signup: 'Signup'
   message:
+    signin_failed: 'E-mail/username or password are incorrect'
+    signup_success: 'Your account has been created successfully'
+    signin_or_signup: 'Signin to your account'
     unauthenticated: 'You are not authenticated'
+  link:
+    signin: 'Signin'
+    signup: 'Signup'
+    signout: 'Signout'
   label:
     email_or_username: 'E-mail or username'
+    name: 'Name'
+    email: 'E-mail'
+    username: 'Username'
+    password: 'Password'
+    password_confirmation: 'Password confirmation'
   button:
     signin: 'Signin'

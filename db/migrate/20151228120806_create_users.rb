@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :username, null: false
       t.string     :email,    null: false
       t.string     :password, null: false
+      t.integer    :level,    null: false, default: User::USER_LEVEL
 
       t.timestamps null: false
     end

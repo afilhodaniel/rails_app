@@ -1,9 +1,25 @@
-<%= form_for :user, url: sessions_signin_path(format: :json) do |f| %>
-  <%= f.label :email, t('label.email_or_username') %>
-  <%= f.text_field :email %>
-  
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.button t('button.signin'), type: :submit %>
-<% end %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12">
+    <div class="page-header">
+      <h1><%= t('title.signin') %></h1>
+    </div>
+    <% if flash[:errors] %>
+      <div class="alert alert-danger">
+        <%= flash[:errors] %>
+      </div>
+    <% end %>
+    <%= form_for :user, url: sessions_signin_path do |f| %>
+      <div class="form-group">
+        <%= f.label :email, t('label.email_or_username') %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, t('label.password') %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.button t('button.signin'), type: :submit, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-12">
+    <div class="page-header">
+      <h1><%= t('title.signup') %></h1>
+    </div>
+    <% if flash[:success] %>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% if flash[:errors] %>
+      <div class="alert alert-danger">
+        <%= flash[:errors].messages %>
+      </div>
+    <% end %>
+    <%= form_for :user, url: sessions_signup_path do |f| %>
+      <div class="form-group">
+        <%= f.label :name, t('label.name') %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, t('label.email') %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :username, t('label.username') %>
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, t('label.password') %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, t('label.password_confirmation') %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.button t('button.signin'), type: :submit, class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def signin_post
-    user = User.where("username = ? OR email = ? AND password = ?", sessions_params[:email], sessions_params[:email], encrypt_password(sessions_params[:password])).first
+    user = User.where("username = ? OR email = ? AND encrypted_password = ?", sessions_params[:email], sessions_params[:email], encrypt_password(sessions_params[:password])).first
 
     if user
       session[:current_user_id] = user.id

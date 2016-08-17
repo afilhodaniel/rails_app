@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  attr_accessor :password
+  
   USER_LEVEL = 0
   ADMIN_LEVEL = 1
   
@@ -7,7 +9,7 @@ class User < ActiveRecord::Base
   validates :name,                  presence: true
   validates :username,              presence: true, uniqueness: true
   validates :email,                 presence: true, uniqueness: true
-  validates :password,              confirmation: true
+  validates :password,              presence: true, confirmation: true
   validates :password_confirmation, presence: true
 
   # Paperclip settings
@@ -18,7 +20,7 @@ class User < ActiveRecord::Base
 
     def encrypt_password
       if self.password.size < 64
-        self.password = Digest::SHA2::hexdigest(password)
+        self.encrypted_password = Digest::SHA2::hexdigest(password)
       end
     end
 

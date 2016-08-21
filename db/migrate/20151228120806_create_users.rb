@@ -1,13 +1,10 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.attachment :avatar
-      t.string     :name,               null: false
-      t.text       :bio
-      t.string     :username,           null: false
-      t.string     :email,              null: false
-      t.string     :encrypted_password, null: false
-      t.integer    :level,              null: false, default: User::USER_LEVEL
+      t.string :name,            null: false
+      t.string :username,        null: false
+      t.string :email,           null: false
+      t.string :password_digest, null: false
 
       t.timestamps null: false
     end

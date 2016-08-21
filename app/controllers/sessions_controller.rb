@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
   end
 
   def signin_post
-    user = User.where("username = ? OR email = ? AND encrypted_password = ?", sessions_params[:email], sessions_params[:email], encrypt_password(sessions_params[:password])).first
+    user = User.where("username = ? OR email = ?", sessions_params[:email], sessions_params[:email]).first
 
-    if user
+    if user and user.authenticate(sessions_params[:password])
       session[:current_user_id] = user.id
 
       respond_to do |format|
@@ -73,10 +73,6 @@ class SessionsController < ApplicationController
 
     def sessions_params
       params.require(:user).permit(:name, :email, :username, :password, :password_confirmation)
-    end
-
-    def encrypt_password(password = nil)
-      return Digest::SHA2::hexdigest(sessions_params[:password])
     end
 
 end

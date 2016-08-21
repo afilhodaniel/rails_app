@@ -9,7 +9,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'nokogiri'
 gem 'kaminari'
-gem 'paperclip'
 gem 'rails_admin'
 
 group :doc do
@@ -19,6 +18,10 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
+  gem 'faker', github: 'afilhodaniel/faker'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end
 
 group :production do

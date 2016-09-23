@@ -30,7 +30,7 @@ Rode o Gulp.js:
 
 O projeto conta com uma API Restful totalmente funcional e versionada, que pode ser evoluída ou substituída conforme as necessidades do seu projeto. Um modelo de usuário também já está configurado como recurso desta API.
 
-Vale a pena ressaltar que esta API só responde requisições feitas em JSON.
+Vale a pena ressaltar que, até o momento, esta API só responde requisições feitas em JSON.
 
 <b>Rotas</b>
 
@@ -61,7 +61,7 @@ Crie novos controladores dentro do diretório <b>app/controllers/api/v1</b> e es
       class UsersControllers < BaseController
         ...
         private
-          def users_params
+          def user_params
             ...
           end
           
@@ -72,20 +72,18 @@ Crie novos controladores dentro do diretório <b>app/controllers/api/v1</b> e es
     end
   end
   
-Todo controlador deve conter o método privado <b><i>resources</i>_params</b> (onde <i>resources</i> é o nome no plural do recurso que está sendo configurado), podendo ou não conter o método privado <b>query_params</b>.
+Todo controlador deve conter o método privado <b><i>resource</i>_params</b> (onde <i>resource</i> é o nome no singular do recurso que está sendo configurado), e também o método privado <b>query_params</b>.
 
   private
-    def users_params
-      params.require(:user).permit(:avatar, :name, :bio, :username, :email, :password)
+    def user_params
+      params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
     end
     
     def query_params
-      params.permit(:id, :username, :email)
+      params.permit(:id)
     end
 
-<b>users_params</b>, neste caso, é utilizado para permitir os parâmetros <i>params[:user][:avatar]</i>, <i>params[:user][:name]</i> e assim por diante, nos métodos <b>create</b> e <b>update</b>.
-
-<b>query_params</b>, pode ser usado para criar uma filtragem de resultados no método <b>index</b>.
+Tanto o método <b>user_params</b> como o método <b>query_params</b> são utilizados para permitir parâmetros (strong params) na requisição. O primeiro, para permitir parâmetros no corpo da requisição. O segundo, na URL.
 
 <b>Paginando resultados</b>
 
@@ -109,7 +107,7 @@ Esta API só responde requisiões do tipo JSON. Para alterar ou adicionar um nov
     format.json { render :index }
   end
 
-Qualquer requisição de outro formato não configurado, feita a um recurso da API, gerará um erro de formato desconhecido.
+Qualquer requisição de outro formato não configurado, feita a um recurso da API, gerará um erro de formato desconhecido (ActionController::UnknownFormat).
 
 === Sessões de usuário
 
@@ -120,7 +118,7 @@ Além da API Restful, este projeto também conta com um sistema de autenticaçã
 
 O primeiro não está protegido por autenticação porque é o responsável por permitir a criação de novos usuários dentro da aplicação.
 
-O segundo, está parcialmente protegido. Isto quer dizer que, para usuários logados e não logados, os templates renderizados são diferentes. O template <b>app/views/application/index.html.erb</b> é renderizado quando o usuário não está logado, enquanto o template <b>app/views/application/home.html.erb</b> é renderizado quando o usuário está logado.
+O segundo não está protegido pois se trata da página inicial do projeto.
 
 Você pode alterar esse comportamento conforme desejar, apenas alterando as classes <b>ApplicationController</b> e <b>BaseController</b>, localizadas em <b>app/controllers</b>.
 
@@ -142,8 +140,4 @@ Para deslogar um usuário da sessão, utilize a rota:
 
 <b>Usuário atual da sessão</b>
 
-Em qualquer controlador ou view que herde direta ou indiretamente a classe<b>ApplicationController</b>, você tem a variável de instância <b>@current_user</b>, que contém todas as informações do usuário atual da sessão.
-
-=== Outras observações
-
-* Estamos usando a gem {paperclip}[https://github.com/thoughtbot/paperclip] para adicionar a funcionalidade de upload de arquivos
+Em qualquer controlador ou view que herde direta ou indiretamente a classe <b>ApplicationController</b>, você tem a variável de instância <b>@current_user</b>, que contém todas as informações do usuário atual da sessão.

@@ -3,6 +3,7 @@ module Api
 		class BaseController < ApplicationController
 			protect_from_forgery with: :null_session
 
+      before_action :force_authentication
       before_action :set_resource, only: [:show, :update, :destroy]
 
       def index

@@ -1,1 +1,1 @@
-this.window[APP_NAME].controller("AppController",function(){});
+this.window[APP_NAME].controller("AppController",["$scope",function(o){}]);

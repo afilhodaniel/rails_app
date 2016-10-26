@@ -100,7 +100,7 @@ Tanto o método <b>user_params</b> como o método <b>query_params</b> são utili
 
 <b>Paginando resultados</b>
 
-Estamos utilizando a gem {kaminari}[https://github.com/amatsuda/kaminari] para paginar resultados no método <b>index</b>.
+Estamos utilizando a gem [kaminari](https://github.com/amatsuda/kaminari) para paginar resultados no método <b>index</b>.
 
 Para paginar resultados, utilize na requisição:
 
